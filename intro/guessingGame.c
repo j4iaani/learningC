@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main () {
 
@@ -6,10 +8,13 @@ printf("************************************\n");
 printf("Wellcome to this silly guessing game\n");
 printf("************************************\n");
 
-int number = 27;
+int secs = time(0);
+srand(secs);
+
+int number = rand() % 100; 
+printf("right number: %d", number);
 
 int guess;
-printf("guess: %d", guess);
 int victory = 0;
 int attempts = 1;
 double score = 1000;
@@ -43,7 +48,7 @@ while(victory == 0){
         }
         
     attempts = attempts + 1;
-    double lostscore = (guess - number) / 2;
+    double lostscore = abs(guess - number) / 2;
     score = score - lostscore;
 
     } 
